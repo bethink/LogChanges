@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date:</b>
+  <%= @user_log.date %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @user_log.user %>
+</p>
+
+<p>
+  <b>Column:</b>
+  <%= @user_log.column %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @user_log.value %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_log_path(@user_log) %> |
+<%= link_to 'Back', user_logs_path %>

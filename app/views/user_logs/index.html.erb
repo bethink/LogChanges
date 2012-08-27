@@ -1,0 +1,29 @@
+<h1>Listing user_logs</h1>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>User</th>
+    <th>Column</th>
+    <th>Value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user_logs.each do |user_log| %>
+  <tr>
+    <td><%= user_log.date %></td>
+    <td><%= user_log.user %></td>
+    <td><%= user_log.column %></td>
+    <td><%= user_log.value %></td>
+    <td><%= link_to 'Show', user_log %></td>
+    <td><%= link_to 'Edit', edit_user_log_path(user_log) %></td>
+    <td><%= link_to 'Destroy', user_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User log', new_user_log_path %>
