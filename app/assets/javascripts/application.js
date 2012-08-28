@@ -13,3 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(function() {
+	$('#user_log').change(function() {
+		if(!$(this).val() == '') {
+			var user_id = window.location.pathname.split('/')[2];
+			window.location = '/users/' + user_id + '/user_logs/' + $(this).val();
+		}
+	});
+});
