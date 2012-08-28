@@ -14,7 +14,13 @@ class UserLogsController < ApplicationController
   # GET /user_logs/1.json
   def show
     @user_log = UserLog.find(params[:id])
+    user = @user_log.user.log_at_date(@user_log.date.to_date)
+    @user_attributes = user.attributes
 
+    @user_attributes.delete('id')
+    @user_attributes.delete('created_at')
+    @user_attributes.delete('updated_at')
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user_log }

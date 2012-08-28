@@ -1,25 +1,26 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Date:</b>
-  <%= @user_log.date %>
+<p id="notice">
+	<%= notice %>
 </p>
-
 <p>
-  <b>User:</b>
-  <%= @user_log.user %>
+	<b>User on date:</b> 
+	<%= select_tag :user_log, options_from_collection_for_select(@user_log.user.user_logs, 'id', 'date', @user_log.id), :include_blank => true %>
 </p>
+<table>
+	<% @user_attributes.each_pair do |column, value| %>
+	<tr>
+		<td><%= content_tag :b, column.titleize %>:</td>
+		<td><%= value %></td>
+	</tr>
+	<% end %>
+</table>
 
-<p>
-  <b>Column:</b>
-  <%= @user_log.column %>
-</p>
-
-<p>
-  <b>Value:</b>
-  <%= @user_log.value %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_log_path(@user_log) %> |
-<%= link_to 'Back', user_logs_path %>
+<script>
+	$(function(){
+		$('#user_log').change(function(){ 
+			if(!$(this).val() == ''){
+				var user_id = window.location.pathname.split('/')[2];
+				window.location='/users/' + user_id + '/user_logs/' + $(this).val(); 
+			}		
+		});
+	});	
+</script>

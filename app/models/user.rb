@@ -31,15 +31,14 @@ class User < ActiveRecord::Base
   end
 
   def log_at_date(date)
-    user_log = self.user_logs.where(:date => Date.today).first
+    user_log = self.user_logs.where(:date => date).first
 
-    if user_log.blank?
-      return nil
+    unless user_log.blank?
+      user = User.new.from_json(user_log.json_attrs)
+      user.id = self.id
+      user
     end
 
-    user = User.new.from_json(user_log.json_attrs)
-    user.id = self.id
-    user
   end
 
 end

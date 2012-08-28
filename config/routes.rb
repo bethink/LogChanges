@@ -1,7 +1,8 @@
 LogChanges::Application.routes.draw do
-  resources :user_logs
 
-  resources :users
+  resources :users do
+    resources :user_logs, :only => [:show] 
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
