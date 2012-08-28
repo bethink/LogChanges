@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   attr_accessible :address, :city, :company, :designation, :name, :phone
   has_many :user_logs
 
+  # https://www.ruby-toolbox.com/categories/Active_Record_Versioning
+
   #   In this approach,
   # => Pros:
   #     - Simple implementation
